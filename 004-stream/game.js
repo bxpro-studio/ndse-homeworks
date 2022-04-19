@@ -14,14 +14,19 @@ const argv = require('yargs/yargs')(hideBin(process.argv))
     .argv;
 
 const fs = require('fs');
-//const path = require('path');
+const path = require('path');
 const { exit } = require('process');
+
+const dir = path.join(__dirname, './logs/');
+
+if(!fs.existsSync(dir))
+    fs.mkdirSync(dir);
 
 if (argv._.length == 0) {
     console.error('Необходимо указать имя для log-файла');
     exit(0);
 } else
-    var log_path = './logs/' + argv._[0];
+    var log_path = path.join(dir, argv._[0]);
 
 const is_file = fs.existsSync(log_path);
 
