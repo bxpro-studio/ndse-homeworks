@@ -66,12 +66,12 @@ const readline = require('readline');
 const input = readline.createInterface(process.stdin, process.stdout);
 const num = Math.round(Math.random()) + 1;
 
-input.on('close', (close) => console.log('Приходи ещё!'))
+input.on('close', (close) => console.log('Приходи ещё!'));
 
 const quest = function (q) {
     return new Promise((resolve, reject) => {
         input.question(q, (ans) => {
-            resolve(ans)
+            resolve(ans);
         });
     });
 };
