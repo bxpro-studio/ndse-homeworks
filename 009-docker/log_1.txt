@@ -1,0 +1,72 @@
+PS C:\Users\79219> docker run --name pinger -it busybox ping -c 7 netology.ru
+Unable to find image 'busybox:latest' locally
+latest: Pulling from library/busybox
+50e8d59317eb: Pull complete
+Digest: sha256:d2b53584f580310186df7a2055ce3ff83cc0df6caacf1e3489bff8cf5d0af5d8
+Status: Downloaded newer image for busybox:latest
+PING netology.ru (188.114.99.144): 56 data bytes
+64 bytes from 188.114.99.144: seq=0 ttl=37 time=19.989 ms
+64 bytes from 188.114.99.144: seq=1 ttl=37 time=19.794 ms
+64 bytes from 188.114.99.144: seq=2 ttl=37 time=17.999 ms
+64 bytes from 188.114.99.144: seq=3 ttl=37 time=18.763 ms
+64 bytes from 188.114.99.144: seq=4 ttl=37 time=20.078 ms
+64 bytes from 188.114.99.144: seq=5 ttl=37 time=18.553 ms
+64 bytes from 188.114.99.144: seq=6 ttl=37 time=23.609 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 17.999/19.826/23.609 ms
+PS C:\Users\79219> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES 
+3e3ad0d2e2c1   busybox   "ping -c 7 netology.…"   43 seconds ago   Exited (0) 36 seconds ago             pinger
+PS C:\Users\79219> docker logs -t pinger   
+2022-05-13T14:48:13.259573488Z PING netology.ru (188.114.99.144): 56 data bytes
+2022-05-13T14:48:13.279633902Z 64 bytes from 188.114.99.144: seq=0 ttl=37 time=19.989 ms
+2022-05-13T14:48:14.279584945Z 64 bytes from 188.114.99.144: seq=1 ttl=37 time=19.794 ms
+2022-05-13T14:48:15.277844027Z 64 bytes from 188.114.99.144: seq=2 ttl=37 time=17.999 ms
+2022-05-13T14:48:16.279042692Z 64 bytes from 188.114.99.144: seq=3 ttl=37 time=18.763 ms
+2022-05-13T14:48:17.280547068Z 64 bytes from 188.114.99.144: seq=4 ttl=37 time=20.078 ms
+2022-05-13T14:48:18.279063492Z 64 bytes from 188.114.99.144: seq=5 ttl=37 time=18.553 ms
+2022-05-13T14:48:19.284392123Z 64 bytes from 188.114.99.144: seq=6 ttl=37 time=23.609 ms
+2022-05-13T14:48:19.284418934Z
+2022-05-13T14:48:19.284421418Z --- netology.ru ping statistics ---
+2022-05-13T14:48:19.284423532Z 7 packets transmitted, 7 packets received, 0% packet loss
+2022-05-13T14:48:19.284425316Z round-trip min/avg/max = 17.999/19.826/23.609 ms
+PS C:\Users\79219> docker start pinger
+pinger
+PS C:\Users\79219> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+3e3ad0d2e2c1   busybox   "ping -c 7 netology.…"   11 minutes ago   Exited (0) 3 minutes ago             pinger
+PS C:\Users\79219> docker logs -t pinger
+2022-05-13T14:48:13.259573488Z PING netology.ru (188.114.99.144): 56 data bytes
+2022-05-13T14:48:13.279633902Z 64 bytes from 188.114.99.144: seq=0 ttl=37 time=19.989 ms
+2022-05-13T14:48:14.279584945Z 64 bytes from 188.114.99.144: seq=1 ttl=37 time=19.794 ms
+2022-05-13T14:48:15.277844027Z 64 bytes from 188.114.99.144: seq=2 ttl=37 time=17.999 ms
+2022-05-13T14:48:16.279042692Z 64 bytes from 188.114.99.144: seq=3 ttl=37 time=18.763 ms
+2022-05-13T14:48:17.280547068Z 64 bytes from 188.114.99.144: seq=4 ttl=37 time=20.078 ms
+2022-05-13T14:48:18.279063492Z 64 bytes from 188.114.99.144: seq=5 ttl=37 time=18.553 ms
+2022-05-13T14:48:19.284392123Z 64 bytes from 188.114.99.144: seq=6 ttl=37 time=23.609 ms
+2022-05-13T14:48:19.284418934Z
+2022-05-13T14:48:19.284421418Z --- netology.ru ping statistics ---
+2022-05-13T14:48:19.284423532Z 7 packets transmitted, 7 packets received, 0% packet loss
+2022-05-13T14:48:19.284425316Z round-trip min/avg/max = 17.999/19.826/23.609 ms
+2022-05-13T14:56:16.481603551Z PING netology.ru (188.114.99.144): 56 data bytes
+2022-05-13T14:56:16.503957338Z 64 bytes from 188.114.99.144: seq=0 ttl=37 time=22.363 ms
+2022-05-13T14:56:17.502600870Z 64 bytes from 188.114.99.144: seq=1 ttl=37 time=20.881 ms
+2022-05-13T14:56:18.501161977Z 64 bytes from 188.114.99.144: seq=2 ttl=37 time=19.301 ms
+2022-05-13T14:56:19.501496369Z 64 bytes from 188.114.99.144: seq=3 ttl=37 time=19.501 ms
+2022-05-13T14:56:20.501664982Z 64 bytes from 188.114.99.144: seq=4 ttl=37 time=19.562 ms
+2022-05-13T14:56:21.500690380Z 64 bytes from 188.114.99.144: seq=5 ttl=37 time=18.490 ms
+2022-05-13T14:56:22.501753199Z 64 bytes from 188.114.99.144: seq=6 ttl=37 time=19.335 ms
+2022-05-13T14:56:22.501780130Z
+2022-05-13T14:56:22.501783065Z --- netology.ru ping statistics ---
+2022-05-13T14:56:22.501785139Z 7 packets transmitted, 7 packets received, 0% packet loss
+2022-05-13T14:56:22.501787183Z round-trip min/avg/max = 18.490/19.919/22.363 ms
+PS C:\Users\79219> docker rm  pinger                       
+pinger
+PS C:\Users\79219> docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:d2b53584f580310186df7a2055ce3ff83cc0df6caacf1e3489bff8cf5d0af5d8
+Deleted: sha256:1a80408de790c0b1075d0a7e23ff7da78b311f85f36ea10098e4a6184c200964
+Deleted: sha256:eb6b01329ebe73e209e44a616a0e16c2b8e91de6f719df9c35e6cdadadbe5965
+PS C:\Users\79219> 
