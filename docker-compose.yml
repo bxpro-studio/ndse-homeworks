@@ -1,0 +1,24 @@
+services:
+  storage:
+    image: redis
+  counter:
+    image: stels80/counter:test
+    ports:
+      - 8080:3002
+    environment:
+      - PORT=3002
+      - REDIS_URL=redis://storage
+    depends_on:
+      - storage
+  books:
+    image: stels80/lib:test
+    ports:
+    - 80:3001
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis://storage
+      - COUNTER_URL=counter
+      - COUNTER_PORT=3002
+    depends_on:
+      - storage
+      - counter
